@@ -13,3 +13,21 @@ function getTextLen (val) {
   return (val || '').replace(/[^x00-xff]/gi, '**').length;
 }
 ```
+
++ 获取 url 参数
+
+```js
+/**
+ * 获取 url 参数
+ * @param name {string} 参数名
+ * @return {string} 参数对应的值
+ */
+function getUrlQuery(name) {
+  const reg = new RegExp(`(^|&)${name}=([^&]*)(&|$)`, 'i');
+  const r = window.location.search.substr(1).match(reg);
+  if (r != null) {
+    return unescape(r[2]);
+  }
+  return null;
+},
+```
